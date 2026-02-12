@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Hug Day Mrs. Dipika 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #1e3c72, #2a5298);
+  text-align:center;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* Falling Hearts */
+.heart{
+  position:fixed;
+  top:-10px;
+  color:#ff4da6;
+  font-size:20px;
+  animation:fall linear infinite;
+  z-index:0;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+  }
+}
+
+h1{
+  padding:30px;
+  position:relative;
+  z-index:2;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+.gallery img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:15px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* Modal */
+.modal{
+  display:none;
+  position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  justify-content:center;
+  align-items:center;
+  z-index:5;
+}
+
+.modal-content{
+  background:white;
+  color:black;
+  padding:20px;
+  border-radius:15px;
+  width:90%;
+  max-width:500px;
+}
+
+.modal-content img{
+  width:100%;
+  border-radius:10px;
+}
+
+.close{
+  float:right;
+  font-size:25px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Hug Day Miss. Dipika 💕</h1>
+
+<audio id="bgMusic"></audio>
+
+<div class="gallery">
+  <img src="Snapchat-952417092.JPG" onclick="openModal(0)">
+  <img src="Snapchat-975669656.JPG" onclick="openModal(1)">
+  <img src="Snapchat-1253794923.JPG" onclick="openModal(2)">
+  <img src="Snapchat-2133932858.JPG" onclick="openModal(3)">
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg">
+    <p id="modalText"></p>
+  </div>
+</div>
+
+<script>
+
+/* Falling Hearts Script */
+for(let i=0;i<30;i++){
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(3+Math.random()*5)+"s";
+  heart.style.fontSize=(15+Math.random()*20)+"px";
+  document.body.appendChild(heart);
+}
+
+/* Special Messages */
+const messages = [
+
+`Mrs. Dipika 💖
+You are truly one of a kind.
+Your kindness makes everything feel softer.
+You bring comfort without even trying.
+That’s what makes you beautifully different.`,
+
+`Mrs. Dipika 🌸
+Your strength is calm but powerful.
+You handle everything with grace.
+Not everyone can stay gentle and strong at the same time.
+But you do it so naturally.`,
+
+`Mrs. Dipika ✨
+Your smile has its own magic.
+It brightens even the simplest moments.
+Your presence changes the atmosphere.
+That is something very rare.`,
+
+`Mrs. Dipika 🌙
+You shine in your own way.
+You never copy anyone — you are original.
+Your heart and thoughts are special.
+Never change who you truly are.`
+
+];
+
+const images = [
+"Snapchat-952417092.JPG",
+"Snapchat-975669656.JPG",
+"Snapchat-1253794923.JPG",
+"Snapchat-2133932858.JPG"
+];
+
+const songs = [
+"bixby - darling, he lied_ (ft. starfall)  lyrics.MP3",
+"BTS (방탄소년단) 'Life Goes On' Official MV.MP3",
+"Jungkook - Please Don't Change Ft. DJ Snake (Lyrics).MP3",
+"Selena Gomez & The Scene - Who Says.MP3"
+];
+
+function openModal(index){
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("modalImg").src=images[index];
+  document.getElementById("modalText").innerText=messages[index];
+
+  let music=document.getElementById("bgMusic");
+  music.src=songs[index];
+  music.play();
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+  document.getElementById("bgMusic").pause();
+}
+
+</script>
+
+</body>
+</html>
